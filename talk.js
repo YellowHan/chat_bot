@@ -1,5 +1,7 @@
 let inMsg;
 
+document.getElementById("output").innerText = "통통 튀는 매력의 라봉이와 대화 해봐요-!!";
+
 document.addEventListener("click", (event) => {
   const target = event.target;
   if (target.id == "send") {
@@ -54,6 +56,6 @@ const inner = () => {
     console.log('아, 귀찮게 하네');
   }
   if(inMsg.includes('불') && inMsg.includes('켜')) {
-    console.log('니가 켜라!');
+    console.log('으휴.. 니가 켜라!');
   }
 }

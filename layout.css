@@ -1,6 +1,8 @@
 body {
   margin: 0px;
   background: rgb(255, 255, 230);
+  font-size: 20px;
+  font-weight: 700;
 }
 #container {
   margin: 50px auto;
