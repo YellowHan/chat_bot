@@ -10,19 +10,17 @@
 <body>
   <div id="container">
     <div class="bot_msg">
-      <p>겨울엔 비타민C 가득한<br>
-      한라봉이 최고지-!!</p>
+      <p id="output"></p>
     </div>
-    <div class="bot_img">
-      <img src="./img/default.png">
-    </div>
-    <form>
-      <input class="user_msg" type="text" placeholder="메시지를 입력해주세요">
+    <div id="bot_img"></div>
+    <div>
+      <input id="user_msg" type="text" placeholder="메시지를 입력해주세요">
       <div class="buttons">
-        <button class="send" type="submit">보내기</button>
-        <button class="cancel" type="reset">취소</button>
+        <input id="send" type="button" value="보내기"></input>
+        <input id="cancel" type="button" value="취소"></input>
       </div>
-    </form>
+    </div>
   </div>
+  <script src="./talk.js"></script>
 </body>
 </html>
