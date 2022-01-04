@@ -28,7 +28,7 @@ body {
 #bot_img {
   flex: 1;
   margin: auto;
-  background: url(./img/rabong_default.png) no-repeat;
+  background: url(./img/default.png) no-repeat;
   background-size: contain;
   width: 300px;
 }
@@ -61,4 +61,16 @@ form {
 }
 #send {
   width: 40%;
+}
+#pop {
+  display: none;
+  border: 1px dotted gray;
+  border-radius: 10px;
+  background: white;
+  padding: 15px;
+  position: fixed;
+  top: 180px;
+  left: 10px;
+  font-size: 15px;
+  font-weight: 400;
 }
