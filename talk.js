@@ -68,7 +68,7 @@ const check = () => {
     document.getElementById("bot_img").style.background =
       "url(./img/default.png) no-repeat";
     document.getElementById("bot_img").style.backgroundSize = "contain";
-  } else if (inMsg == "고마워") {
+  } else if (inMsg.includes('고마워')) {
     document.getElementById("output").innerText =
       "고마움의 표현은 입금으로 ♥_♥";
     document.getElementById("bot_img").style.background =
