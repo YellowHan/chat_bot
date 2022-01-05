@@ -32,6 +32,7 @@ const check = () => {
   } else if ((inMsg.includes("불") && inMsg.includes("꺼")) || inMsg.includes("끄")) {
     if(!lightOn) {
       document.getElementById("output").innerText = "이미 불이 꺼져 있는데요?(바보인가..)";
+      what();
     }
     else {
       switch (random()) {
@@ -55,6 +56,7 @@ const check = () => {
   } else if (inMsg.includes("불") && inMsg.includes("켜")) {
     if(lightOn) {
       document.getElementById("output").innerText = "이미 불이 켜져 있는데요?(바보인가..)";
+      what();
     }
     else {
       lightOn = true;
