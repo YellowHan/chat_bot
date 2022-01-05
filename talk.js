@@ -1,7 +1,7 @@
 let inMsg;
+let lightOn = true;
 
-document.getElementById("output").innerText =
-  "통통 튀는 매력의 라봉이와 대화 해봐요-!!";
+document.getElementById("output").innerText = "통통 튀는 매력의 라봉이와 대화 해봐요-!!";
 
 document.addEventListener("click", (event) => {
   const target = event.target;
@@ -22,8 +22,7 @@ document.addEventListener("click", (event) => {
 const check = () => {
   if (inMsg == "") {
     document.getElementById("output").innerText = "하고 싶은 말 없어요?";
-    document.getElementById("bot_img").style.background = "url(./img/what.png) no-repeat";
-    document.getElementById("bot_img").style.backgroundSize = "contain";
+    what();
   } else if (inMsg.includes("안녕")) {
     document.getElementById("output").innerText = "안녕하세요오옹~";
     imgDefault();
@@ -31,32 +30,44 @@ const check = () => {
     document.getElementById("output").innerText = "라봉이에요오옹~";
     imgDefault();
   } else if ((inMsg.includes("불") && inMsg.includes("꺼")) || inMsg.includes("끄")) {
-    switch (random()) {
-      case 1:
-        document.getElementById("output").innerText = "네? 뭐라고 하셨어요?";
-        what();
-        break;
-      case 2:
-        document.getElementById("output").innerText = "??????????";
-        what();
-        break;
-      case 3:
-        document.getElementById("output").innerText = "넵!!";
-        imgDefault();
-        document.body.style.background = "black";
-        document.getElementById("user_msg").style.color = "white";
-        break;
+    if(!lightOn) {
+      document.getElementById("output").innerText = "이미 불이 꺼져 있는데요?(바보인가..)";
+    }
+    else {
+      switch (random()) {
+        case 1:
+          document.getElementById("output").innerText = "네? 뭐라고 하셨어요?";
+          what();
+          break;
+        case 2:
+          document.getElementById("output").innerText = "??????????";
+          what();
+          break;
+        case 3:
+          document.getElementById("output").innerText = "넵!!";
+          imgDefault();
+          lightOn = false;
+          document.body.style.background = "black";
+          document.getElementById("user_msg").style.color = "white";
+          break;
+      }
     }
   } else if (inMsg.includes("불") && inMsg.includes("켜")) {
-    document.getElementById("output").innerText = "불 켜져랏~ 얍-!!";
-    document.getElementById("bot_img").style.background = "url(./img/lightOn.png) no-repeat";
-    document.getElementById("bot_img").style.backgroundSize = "contain";
-    setTimeout(() => {
-      document.body.style.background = "white";
-      document.getElementById("bot_img").style.background = "url(./img/lightOnDone.png) no-repeat";
+    if(lightOn) {
+      document.getElementById("output").innerText = "이미 불이 켜져 있는데요?(바보인가..)";
+    }
+    else {
+      lightOn = true;
+      document.getElementById("output").innerText = "불 켜져랏~ 얍-!!";
+      document.getElementById("bot_img").style.background = "url(./img/lightOn.png) no-repeat";
       document.getElementById("bot_img").style.backgroundSize = "contain";
-      document.getElementById("user_msg").style.color = "black";
-    }, 1000);
+      setTimeout(() => {
+        document.body.style.background = "white";
+        document.getElementById("bot_img").style.background = "url(./img/lightOnDone.png) no-repeat";
+        document.getElementById("bot_img").style.backgroundSize = "contain";
+        document.getElementById("user_msg").style.color = "black";
+      }, 1000);
+    }
   } else if (inMsg.includes("바보")) {
     document.getElementById("output").innerText = "파.업.";
     leafThrow();
