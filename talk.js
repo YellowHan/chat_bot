@@ -11,73 +11,116 @@ document.addEventListener("click", (event) => {
     document.getElementById("user_msg").value = "";
   }
   if (target.id == "help") {
-    if(document.getElementById('pop').style.display == "none") {
-      document.getElementById('pop').style.display = "inline";
-    }
-    else {
-      document.getElementById('pop').style.display = "none";
+    if (document.getElementById("pop").style.display == "none") {
+      document.getElementById("pop").style.display = "inline";
+    } else {
+      document.getElementById("pop").style.display = "none";
     }
   }
 });
 
 const check = () => {
-  if (inMsg.includes("안녕")) {
+  if (inMsg == "") {
+    document.getElementById("output").innerText = "하고 싶은 말 없어요?";
+    document.getElementById("bot_img").style.background = "url(./img/what.png) no-repeat";
+    document.getElementById("bot_img").style.backgroundSize = "contain";
+  } else if (inMsg.includes("안녕")) {
     document.getElementById("output").innerText = "안녕하세요오옹~";
+    imgDefault();
   } else if (inMsg.includes("이름")) {
     document.getElementById("output").innerText = "라봉이에요오옹~";
-  } else if (
-    (inMsg.includes("불") && inMsg.includes("꺼")) || inMsg.includes("끄")) {
-    let random = Math.floor(Math.random() * 3) + 1;
-    switch (random) {
+    imgDefault();
+  } else if ((inMsg.includes("불") && inMsg.includes("꺼")) || inMsg.includes("끄")) {
+    switch (random()) {
       case 1:
         document.getElementById("output").innerText = "네? 뭐라고 하셨어요?";
+        what();
         break;
       case 2:
         document.getElementById("output").innerText = "??????????";
+        what();
         break;
       case 3:
         document.getElementById("output").innerText = "넵!!";
+        imgDefault();
         document.body.style.background = "black";
         document.getElementById("user_msg").style.color = "white";
         break;
     }
   } else if (inMsg.includes("불") && inMsg.includes("켜")) {
     document.getElementById("output").innerText = "불 켜져랏~ 얍-!!";
-    document.getElementById("bot_img").style.background =
-      "url(./img/lightOn.png) no-repeat";
+    document.getElementById("bot_img").style.background = "url(./img/lightOn.png) no-repeat";
     document.getElementById("bot_img").style.backgroundSize = "contain";
     setTimeout(() => {
       document.body.style.background = "white";
-      document.getElementById("bot_img").style.background =
-        "url(./img/lightOnDone.png) no-repeat";
+      document.getElementById("bot_img").style.background = "url(./img/lightOnDone.png) no-repeat";
       document.getElementById("bot_img").style.backgroundSize = "contain";
       document.getElementById("user_msg").style.color = "black";
     }, 1000);
   } else if (inMsg.includes("바보")) {
     document.getElementById("output").innerText = "파.업.";
-    document.getElementById("bot_img").style.background =
-      "url(./img/iwont.png) no-repeat";
-    document.getElementById("bot_img").style.backgroundSize = "contain";
-    setTimeout(() => {
-      document.getElementById("bot_img").style.background =
-        "url(./img/iwontDone.png) no-repeat";
-      document.getElementById("bot_img").style.backgroundSize = "contain";
-    }, 400);
+    leafThrow();
   } else if (inMsg.includes("미안")) {
     document.getElementById("output").innerText = "괜차나요옹~";
-    document.getElementById("bot_img").style.background =
-      "url(./img/default.png) no-repeat";
-    document.getElementById("bot_img").style.backgroundSize = "contain";
-  } else if (inMsg.includes('고마워')) {
-    document.getElementById("output").innerText =
-      "고마움의 표현은 입금으로 ♥_♥";
-    document.getElementById("bot_img").style.background =
-      "url(./img/twinkle.png) no-repeat";
-    document.getElementById("bot_img").style.backgroundSize = "contain";
-  } else {
+    imgDefault();
+  } else if (inMsg.includes("고마워")) {
+    document.getElementById("output").innerText = "고마움의 표현은 입금으로 ♥_♥";
+    twinkle();
+  }
+  else if (inMsg.includes('숨바꼭질')) {
+    document.getElementById("output").innerText = "좋아요-!!";
+    twinkle();
+  }
+  else if(inMsg.includes('숨어')) {
+    document.getElementById("output").innerText = "나 찾아봐라~♬";
+    switch(random()) {
+      case 1 : 
+      document.getElementById("bot_img").style.background = "url(./img/find1.png) no-repeat";
+      document.getElementById("bot_img").style.backgroundSize = "contain";
+      break;
+      case 2 : 
+      document.getElementById("bot_img").style.background = "url(./img/find2.png) no-repeat";
+      document.getElementById("bot_img").style.backgroundSize = "contain";
+      break;
+      case 3 : 
+      document.getElementById("bot_img").style.background = "url(./img/find3.png) no-repeat";
+      document.getElementById("bot_img").style.backgroundSize = "contain";
+      break;
+    }
+  }
+  else if(inMsg.includes('찾았다')) {
+    document.getElementById("output").innerText = "에잉.. 들켜버렸네..";
+    leafThrow();
+  }
+  else {
     document.getElementById("output").innerText = "잘 모르겠어요..";
-    document.getElementById("bot_img").style.background =
-      "url(./img/what.png) no-repeat";
-    document.getElementById("bot_img").style.backgroundSize = "contain";
+    what();
   }
 };
+
+const imgDefault = () => {
+  document.getElementById("bot_img").style.background = "url(./img/default.png) no-repeat";
+  document.getElementById("bot_img").style.backgroundSize = "contain";
+}
+
+const what = () => {
+  document.getElementById("bot_img").style.background = "url(./img/what.png) no-repeat";
+  document.getElementById("bot_img").style.backgroundSize = "contain";
+}
+
+const twinkle = () => {
+  document.getElementById("bot_img").style.background = "url(./img/twinkle.png) no-repeat";
+  document.getElementById("bot_img").style.backgroundSize = "contain";
+}
+
+const leafThrow = () => {
+  document.getElementById("bot_img").style.background = "url(./img/iwont.png) no-repeat";
+  document.getElementById("bot_img").style.backgroundSize = "contain";
+  setTimeout(() => {
+    document.getElementById("bot_img").style.background = "url(./img/iwontDone.png) no-repeat";
+    document.getElementById("bot_img").style.backgroundSize = "contain";
+  }, 400);
+}
+const random = () => {
+  return Math.floor(Math.random() * 3) + 1;;
+}
