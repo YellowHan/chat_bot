@@ -107,6 +107,7 @@ const check = () => {
   }
   else {
     document.getElementById("output").innerText = "잘 모르겠어요..";
+    write();
     what();
   }
 };
@@ -136,4 +137,32 @@ const leafThrow = () => {
 }
 const random = () => {
   return Math.floor(Math.random() * 3) + 1;;
+}
+
+// CDN 
+let active = false;
+const app = document.getElementById('app');
+const typewriter = new Typewriter(app, {
+  loop: false
+});
+
+const write = () => {
+  if(!active) {
+    active = true;
+    app.style.display = "block";
+    typewriter
+    .typeString('라봉이가 알아듣지 못하는 것 같다.')
+    .pauseFor(1000)
+    .deleteAll()
+    .typeString('하단의 ? 버튼을 눌러서 키워드를 확인 해보자')
+    .pauseFor(5500)
+    .deleteAll()
+    .start();
+    setTimeout(() => {
+      app.style.display = "none";
+    },15000);
+    setTimeout(() => {
+      active = false;
+    },17000);
+  }
 }

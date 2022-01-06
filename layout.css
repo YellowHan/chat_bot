@@ -12,6 +12,14 @@ body {
   flex-direction: column;
   text-align: center;
 }
+#typing {
+  flex: 0.1;
+}
+#app {
+  display: none;
+  font-size: 15px;
+  font-weight: 400;
+}
 .bot_msg {
   flex: 0.6;
   background: url(./img/msg.png) no-repeat center;
