@@ -1,9 +1,6 @@
 const inMsg = document.getElementById("inMsg");
 const outMsg = document.getElementById("outMsg");
 const bgImg = document.getElementById("botImg");
-let input;
-let lightOn = true;
-let learnStep = 0;
 const chatData = [
   // 단일 메시지
   {
@@ -69,6 +66,9 @@ document.addEventListener("click", (event) => {
     }
   }
 });
+
+let input;
+let lightOn = true;
 
 const check = () => {
   let isfind = false;
@@ -154,9 +154,11 @@ const check = () => {
   }
 };
 
+let question = "";
+let answer = "";
+let learnStep = 0;
+
 const learn = () => {
-  let question = "";
-  let answer = "";
   if(learnStep == 0) {
     question = input;
     outMsg.innerText = "라봉이가 모르는 말이에요..";
@@ -181,6 +183,7 @@ const learn = () => {
     answer = input;
     chatData.push({question: `${question}`,answer: `${answer}`});
     outMsg.innerText = "다음에 또 물어보면 꼭 그렇게 대답할께요!!";
+    learnStep = 0;
   }
 }
 
