@@ -6,6 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ChatBot</title>
   <link rel="stylesheet" href="./layout.css">
+  <script src="https://unpkg.com/typewriter-effect@2.18.2/dist/core.js" defer></script>
+  <script src="./talk.js" defer></script>
 </head>
 <body>
   <div id="container">
@@ -13,11 +15,11 @@
       <div id="app"></div>
     </div>
     <div class="bot_msg">
-      <p id="output"></p>
+      <p id="outMsg"></p>
     </div>
-    <div id="bot_img"></div>
+    <div id="botImg"></div>
     <div>
-      <input id="user_msg" type="text" placeholder="메시지를 입력해주세요">
+      <input id="inMsg" type="text" placeholder="메시지를 입력해주세요">
       <div class="buttons">
         <input id="send" type="button" value="보내기"></input>
         <input id="help" type="button" value=" ? "></input>
@@ -31,7 +33,5 @@
     바보 / 미안 / 고마워<br>
     숨바꼭질 / 숨어 / 찾았다<br>
   </div>
-  <script src=" https://unpkg.com/typewriter-effect@latest/dist/core.js "></script>
-  <script src="./talk.js"></script>
 </body>
 </html>

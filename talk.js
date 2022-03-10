@@ -4,53 +4,50 @@ const bgImg = document.getElementById("botImg");
 const chatData = [
   // 단일 메시지
   {
-    "question": "안녕",
-    "answer": "안녕하세요오옹~",
-    "bgImg": "default"
+    question: "안녕",
+    answer: "안녕하세요오옹~",
+    bgImg: "default",
   },
   {
-    "question": "이름",
-    "answer": "라봉이에요오옹~",
-    "bgImg": "default"
+    question: "이름",
+    answer: "라봉이에요오옹~",
+    bgImg: "default",
   },
   {
-    "question": "미안",
-    "answer": "괜차나요옹~",
-    "bgImg": "default"
+    question: "미안",
+    answer: "괜차나요옹~",
+    bgImg: "default",
   },
   {
-    "question": "고마워",
-    "answer": "고마움의 표현은 입금으로 ♥_♥",
-    "bgImg": "twinkle"
+    question: "고마워",
+    answer: "고마움의 표현은 입금으로 ♥_♥",
+    bgImg: "twinkle",
   },
   {
-    "question": "숨바꼭질",
-    "answer": "좋아요-!!",
-    "bgImg": "twinkle"
+    question: "숨바꼭질",
+    answer: "좋아요-!!",
+    bgImg: "twinkle",
   },
-    // 단일 메시지 + 이중 이미지
+  // 단일 메시지 + 이중 이미지
   {
-    "question": "바보",
-    "answer": "나 안해.. 삐짐..",
-    "bgImg": "iwont"
-  },
-  {
-    "question": "숨어",
-    "answer": "나 찾아봐라~♬",
-    "bgImg": [
-      "find1",
-      "find2",
-      "find3"
-    ]
+    question: "바보",
+    answer: "나 안해.. 삐짐..",
+    bgImg: "iwont",
   },
   {
-    "question": "찾았다",
-    "answer": "에잉.. 들켜버렸네..",
-    "bgImg": "iwont"
-  }
+    question: "숨어",
+    answer: "나 찾아봐라~♬",
+    bgImg: ["find1", "find2", "find3"],
+  },
+  {
+    question: "찾았다",
+    answer: "에잉.. 들켜버렸네..",
+    bgImg: "iwont",
+  },
 ];
 
-document.getElementById("outMsg").innerText = "통통 튀는 매력의 라봉이와 대화 해봐요-!!";
+document.getElementById("outMsg").innerText =
+  "통통 튀는 매력의 라봉이와 대화 해봐요-!!";
 
 document.addEventListener("click", (event) => {
   const target = event.target;
@@ -78,22 +75,25 @@ const check = () => {
   for (let i = 0; i < chatData.length; i++) {
     // 단일 메시지 + 이중 이미지 처리
     if (input.includes(chatData[i].question)) {
-      if(chatData[i].question == "바보" || chatData[i].question == "찾았다") {
+      if (chatData[i].question == "바보" || chatData[i].question == "찾았다") {
         outMsg.innerText = chatData[i].answer;
         doubleImg(chatData[i].bgImg);
         isfind = true;
         return;
       }
-      if(chatData[i].question == "숨어") {
+      if (chatData[i].question == "숨어") {
         outMsg.innerText = chatData[i].answer;
-        bgImg.style.background = "url(./img/" + chatData[i].bgImg[random()-1] + ".png) no-repeat";
+        bgImg.style.background =
+          "url(./img/" + chatData[i].bgImg[random() - 1] + ".png) no-repeat";
         bgImg.style.backgroundSize = "contain";
         isfind = true;
         return;
-      }
-      else {
+      } else {
         outMsg.innerText = chatData[i].answer;
-        bgImg.style.background = "url(./img/" + chatData[i].bgImg == undefined? "default" : chatData[i].bgImg + ".png) no-repeat";
+        bgImg.style.background =
+          "url(./img/" + chatData[i].bgImg == undefined
+            ? "default"
+            : chatData[i].bgImg + ".png) no-repeat";
         bgImg.style.backgroundSize = "contain";
         isfind = true;
       }
@@ -149,7 +149,7 @@ const check = () => {
       isfind = true;
     }
   }
-  if(!isfind) {
+  if (!isfind) {
     return learn();
   }
 };
@@ -159,33 +159,34 @@ let answer = "";
 let learnStep = 0;
 
 const learn = () => {
-  if(learnStep == 0) {
+  if (learnStep == 0) {
     question = input;
     outMsg.innerText = "라봉이가 모르는 말이에요..";
     write();
     setTimeout(() => {
-      outMsg.innerText = "어떻게 대답해야 하는지 알려줄래요?\n'응' or '아니'로 대답해주세요";
-    },1500);
+      outMsg.innerText =
+        "어떻게 대답해야 하는지 알려줄래요?\n'응' or '아니'로 대답해주세요";
+    }, 1500);
     learnStep = 1;
   }
-  if(learnStep == 1) {
-    if(input == "응") {
+  if (learnStep == 1) {
+    if (input == "응") {
       outMsg.innerText = "좋아요!! 뭐라고 대답 할까요?";
       learnStep = 2;
       return;
     }
-    if(input == "아니") {
+    if (input == "아니") {
       outMsg.innerText = "ㅠㅠ.. 다음엔 꼭 알려주세요!!";
       learnStep = 0;
     }
   }
-  if(learnStep == 2) {
+  if (learnStep == 2) {
     answer = input;
-    chatData.push({question: `${question}`,answer: `${answer}`});
+    chatData.push({ question: `${question}`, answer: `${answer}` });
     outMsg.innerText = "다음에 또 물어보면 꼭 그렇게 대답할께요!!";
     learnStep = 0;
   }
-}
+};
 
 const random = () => {
   return Math.floor(Math.random() * 3) + 1;
@@ -202,7 +203,7 @@ const doubleImg = (imgName) => {
   bgImg.style.backgroundSize = "contain";
   setTimeout(() => {
     bgImg.style.background = "url(./img/" + imgName + "Done.png) no-repeat";
-      bgImg.style.backgroundSize = "contain";
+    bgImg.style.backgroundSize = "contain";
   }, 400);
 };
 
@@ -216,10 +217,9 @@ const typewriter = new Typewriter(app, {
 const write = () => {
   if (!active) {
     active = true;
-    if(!lightOn) {
+    if (!lightOn) {
       document.getElementById("app").style.color = "white";
-    }
-    else {
+    } else {
       document.getElementById("app").style.color = "black";
     }
     app.style.display = "block";

@@ -33,14 +33,14 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
 }
-#bot_img {
+#botImg {
   flex: 1;
   margin: auto;
   background: url(./img/default.png) no-repeat;
   background-size: contain;
   width: 300px;
 }
-#user_msg {
+#inMsg {
   background: rgba(255, 255, 255, 0);
   width: 50%;
   height: 30%;
